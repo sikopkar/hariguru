@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Hari Guru</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+    }
+
+    html {
+      height: 100%;
+      width: 100%;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100%;
+      background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 25%, #f48fb1 50%, #f06292 75%, #ec407a 100%);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+    }
+
+    /* Floating decorative elements */
+    .floating-element {
+      position: absolute;
+      opacity: 0.3;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-element:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    .floating-element:nth-child(3) {
+      animation-delay: 2s;
+    }
+
+    .floating-element:nth-child(4) {
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-30px) rotate(5deg);
+      }
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Content card */
+    .content-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 30px;
+      padding: 60px 50px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(236, 64, 122, 0.3);
+      position: relative;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .main-title {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, #ec407a, #d81b60);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.3;
+      animation: titleGlow 2s ease-in-out infinite alternate, slideInDown 1.5s ease-out;
+    }
+
+    @keyframes titleGlow {
+      from {
+        filter: drop-shadow(0 0 5px rgba(236, 64, 122, 0.3));
+      }
+      to {
+        filter: drop-shadow(0 0 15px rgba(236, 64, 122, 0.6));
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .message {
+      font-size: 20px;
+      color: #6d4c41;
+      text-align: center;
+      margin: 25px 0;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .message:nth-of-type(1) {
+      animation: slideInLeft 1.5s ease-out 0.5s both;
+    }
+
+    .message:nth-of-type(2) {
+      animation: slideInRight 1.5s ease-out 1s both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .signature {
+      font-size: 24px;
+      color: #ec407a;
+      text-align: center;
+      margin-top: 40px;
+      font-weight: 600;
+      animation: zoomIn 1.5s ease-out 1.5s both;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Decorative hearts */
+    .heart {
+      color: #f06292;
+      font-size: 30px;
+      display: inline-block;
+      margin: 0 15px;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    .divider {
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #f06292, transparent);
+      margin: 30px auto;
+      border-radius: 2px;
+      animation: expandWidth 1s ease-out both;
+    }
+
+    .divider:first-of-type {
+      animation-delay: 1.2s;
+    }
+
+    .divider:nth-of-type(2) {
+      animation-delay: 1.8s;
+    }
+
+    .divider:nth-of-type(3) {
+      animation-delay: 3s;
+    }
+
+    @keyframes expandWidth {
+      from {
+        width: 0;
+        opacity: 0;
+      }
+      to {
+        width: 100px;
+        opacity: 1;
+      }
+    }
+
+    /* Photo Grid Styles */
+    .photo-grid-container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin: 40px 0;
+      animation: fadeIn 1.5s ease-out 2s both;
+    }
+
+    .photo-row {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .photo-caption {
+      flex: 1;
+      max-width: 300px;
+      font-size: 16px;
+      color: #6d4c41;
+      line-height: 1.6;
+      font-style: italic;
+      padding: 20px;
+      background: rgba(252, 228, 236, 0.4);
+      border-radius: 15px;
+      border-left: 4px solid #f06292;
+      animation: fadeInSlide 1s ease-out both;
+    }
+
+    .photo-row:nth-child(1) .photo-caption {
+      animation-delay: 2.5s;
+    }
+
+    .photo-row:nth-child(2) .photo-caption {
+      animation-delay: 2.8s;
+    }
+
+    .photo-row:nth-child(3) .photo-caption {
+      animation-delay: 3.1s;
+    }
+
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .photo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: photoSlideUp 1s ease-out both;
+    }
+
+    .photo-wrapper:nth-child(1) {
+      animation-delay: 2.2s;
+    }
+
+    .photo-wrapper:nth-child(2) {
+      animation-delay: 2.4s;
+    }
+
+    .photo-wrapper:nth-child(3) {
+      animation-delay: 2.6s;
+    }
+
+    @keyframes photoSlideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .photo-frame {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(236, 64, 122, 0.2);
+      border: 4px solid rgba(255, 255, 255, 0.8);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-frame:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(236, 64, 122, 0.3);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .cloud-divider {
+      width: 100%;
+      height: 40px;
+      margin-top: -10px;
+      animation: cloudFloat 4s ease-in-out infinite;
+    }
+
+    .photo-wrapper:nth-child(1) .cloud-divider {
+      animation-delay: 0s;
+    }
+
+    .photo-wrapper:nth-child(2) .cloud-divider {
+      animation-delay: 1s;
+    }
+
+    @keyframes cloudFloat {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(10px);
+      }
+    }
+
+    /* Decorative illustrations */
+    .illustration {
+      position: absolute;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 768px) {
+      .content-card {
+        padding: 40px 30px;
+      }
+
+      .main-title {
+        font-size: 36px;
+      }
+
+      .message {
+        font-size: 18px;
+      }
+
+      .signature {
+        font-size: 20px;
+      }
+
+      .photo-row {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .photo-caption {
+        max-width: 100%;
+      }
+
+      .cloud-divider {
+        height: 30px;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container"><!-- Sparkles -->
+   <div class="sparkle" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+   <div class="sparkle" style="top: 20%; right: 20%; animation-delay: 0.5s;"></div>
+   <div class="sparkle" style="bottom: 30%; left: 10%; animation-delay: 1s;"></div>
+   <div class="sparkle" style="bottom: 20%; right: 15%; animation-delay: 1.5s;"></div>
+   <div class="sparkle" style="top: 50%; left: 5%; animation-delay: 2s;"></div>
+   <div class="sparkle" style="top: 60%; right: 10%; animation-delay: 2.5s;"></div><!-- Floating books -->
+   <svg class="floating-element" style="top: 10%; left: 10%; width: 60px; height: 60px;" viewbox="0 0 24 24" fill="#f06292"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+   </svg><!-- Floating flowers -->
+   <svg class="floating-element" style="top: 15%; right: 15%; width: 50px; height: 50px;" viewbox="0 0 24 24" fill="#ec407a"><path d="M12 22c4.97 0 9-4.03 9-9-4.97 0-9 4.03-9 9zM5.6 10.25c0 1.38 1.12 2.5 2.5 2.5.53 0 1.01-.16 1.42-.44l-.02.19c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5l-.02-.19c.4.28.89.44 1.42.44 1.38 0 2.5-1.12 2.5-2.5 0-1-.59-1.85-1.43-2.25.84-.4 1.43-1.25 1.43-2.25 0-1.38-1.12-2.5-2.5-2.5-.53 0-1.01.16-1.42.44l.02-.19C14.5 2.12 13.38 1 12 1S9.5 2.12 9.5 3.5l.02.19c-.4-.28-.89-.44-1.42-.44-1.38 0-2.5 1.12-2.5 2.5 0 1 .59 1.85 1.43 2.25-.84.4-1.43 1.25-1.43 2.25zM12 5.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5S9.5 9.38 9.5 8s1.12-2.5 2.5-2.5zM3 13c0 4.97 4.03 9 9 9 0-4.97-4.03-9-9-9z" />
+   </svg><!-- Floating stars -->
+   <svg class="floating-element" style="bottom: 20%; left: 20%; width: 45px; height: 45px;" viewbox="0 0 24 24" fill="#f48fb1"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+   </svg>
+   <svg class="floating-element" style="bottom: 15%; right: 25%; width: 40px; height: 40px;" viewbox="0 0 24 24" fill="#f8bbd0"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+   </svg><!-- Content Card -->
+   <div class="content-card">
+    <div class="main-title" id="mainTitle">
+     Selamat Hari Guru, Bu Vida
+    </div>
+    <div class="divider"></div>
+    <div class="message" id="messageOne"><span class="heart">💖</span> Terima kasih atas semua ilmu dan bimbingannya <span class="heart">💖</span>
+    </div>
+    <div class="message" id="messageTwo">
+     ✨ You are the best teacher ever ✨
+    </div>
+    <div class="divider"></div><!-- Photo Grid Section -->
+    <div class="photo-grid-container"><!-- Photo 1 with Caption -->
+     <div class="photo-row">
+      <div class="photo-wrapper">
+       <div class="photo-frame">
+        <img src="3.jpg" class="photo-placeholder" alt="Foto 1" />
+       </div>
+      </div>
+      <svg class="cloud-divider" viewbox="0 0 200 60" xmlns="http://www.w3.org/2000/svg"><path d="M 20,40 Q 30,20 50,30 Q 70,10 90,30 Q 110,20 130,30 Q 150,10 170,30 L 180,50 L 10,50 Z" fill="rgba(255,255,255,0.6)" opacity="0.8" /> <path d="M 30,35 Q 40,25 55,32 Q 75,18 95,32 Q 115,25 135,32 Q 155,18 175,32 L 180,50 L 20,50 Z" fill="rgba(255,255,255,0.4)" opacity="0.6" />
+      </svg>
+      <div class="photo-caption">
+       💙 Berapa banyak pantai yang sudah saya kunjungi, berkat diajak bu Vidaa, lovee
+      </div>
+     </div><!-- Photo 2 with Caption -->
+     <div class="photo-row">
+      <div class="photo-wrapper">
+       <div class="photo-frame">
+        <img src="2.jpg" class="photo-placeholder" alt="Foto 1" />
+       </div>
+      </div>
+      <svg class="cloud-divider" viewbox="0 0 200 60" xmlns="http://www.w3.org/2000/svg"><path d="M 15,42 Q 25,22 45,32 Q 65,12 85,32 Q 105,22 125,32 Q 145,12 165,32 L 185,50 L 5,50 Z" fill="rgba(255,255,255,0.6)" opacity="0.8" /> <path d="M 25,37 Q 35,27 50,34 Q 70,20 90,34 Q 110,27 130,34 Q 150,20 170,34 L 185,50 L 15,50 Z" fill="rgba(255,255,255,0.4)" opacity="0.6" />
+      </svg>
+      <div class="photo-caption">
+       🌙 Ini momen dimana saling tuker bekel untuk berbuka, aku bawa apa ya lupa wkkw
+      </div>
+     </div><!-- Photo 3 with Caption -->
+     <div class="photo-row">
+      <div class="photo-wrapper">
+       <div class="photo-frame">
+          <img src="1.jpg" class="photo-placeholder" alt="Foto 1" />
+       </div>
+      </div>
+      <svg class="cloud-divider" viewbox="0 0 200 60" xmlns="http://www.w3.org/2000/svg"><path d="M 20,40 Q 30,20 50,30 Q 70,10 90,30 Q 110,20 130,30 Q 150,10 170,30 L 180,50 L 10,50 Z" fill="rgba(255,255,255,0.6)" opacity="0.8" /> <path d="M 30,35 Q 40,25 55,32 Q 75,18 95,32 Q 115,25 135,32 Q 155,18 175,32 L 180,50 L 20,50 Z" fill="rgba(255,255,255,0.4)" opacity="0.6" />
+      </svg>
+      <div class="photo-caption">
+       🎉 And yaaaa!!! masih bersama among awrgaa
+      </div>
+     </div>
+    </div>
+    <div class="divider"></div>
+    <div class="message" style="animation: fadeIn 2s ease-out 3.5s both; margin-top: 30px;">
+     📸✨ Banyak foto dan kenangannya, terimakasih sekali lagi untuk semua 💕
+    </div>
+    <div class="signature" id="signature">
+     From: Isaaa 🌸
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#fce4ec",
+      secondary_surface_color: "#ffffff",
+      text_color: "#6d4c41",
+      primary_action_color: "#ec407a",
+      secondary_action_color: "#f06292",
+      font_family: "Georgia",
+      font_size: 16,
+      main_title: "Selamat Hari Guru, Bu Vida",
+      message_one: "Terima kasih atas semua ilmu dan bimbingannya",
+      message_two: "You are the best teacher ever",
+      signature: "From: Isaaa 🌸"
+    };
+
+    async function onConfigChange(config) {
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.secondary_surface_color || defaultConfig.secondary_surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+
+      // Update text content
+      document.getElementById('mainTitle').textContent = config.main_title || defaultConfig.main_title;
+      document.getElementById('messageOne').innerHTML = `<span class="heart">💖</span>${config.message_one || defaultConfig.message_one}<span class="heart">💖</span>`;
+      document.getElementById('messageTwo').innerHTML = `✨ ${config.message_two || defaultConfig.message_two} ✨`;
+      document.getElementById('signature').textContent = config.signature || defaultConfig.signature;
+
+      // Update colors
+      document.querySelector('.container').style.background = `linear-gradient(135deg, ${bgColor} 0%, #f8bbd0 25%, #f48fb1 50%, ${secondaryColor} 75%, ${primaryColor} 100%)`;
+      document.querySelector('.content-card').style.background = `rgba(255, 255, 255, 0.95)`;
+      document.querySelector('.main-title').style.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
+      document.querySelector('.main-title').style.webkitBackgroundClip = 'text';
+      document.querySelector('.main-title').style.backgroundClip = 'text';
+      
+      const messages = document.querySelectorAll('.message');
+      messages.forEach(msg => {
+        msg.style.color = textColor;
+      });
+      
+      document.querySelector('.signature').style.color = primaryColor;
+      
+      const hearts = document.querySelectorAll('.heart');
+      hearts.forEach(heart => {
+        heart.style.color = secondaryColor;
+      });
+
+      // Update fonts
+      const baseFontStack = 'Georgia, serif';
+      document.querySelector('.main-title').style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      document.querySelectorAll('.message').forEach(el => {
+        el.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+        el.style.fontSize = `${fontSize * 1.25}px`;
+      });
+      document.querySelector('.signature').style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      document.querySelector('.signature').style.fontSize = `${fontSize * 1.5}px`;
+      document.querySelector('.main-title').style.fontSize = `${fontSize * 3}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.secondary_surface_color || defaultConfig.secondary_surface_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.config.secondary_surface_color = value;
+                window.elementSdk.setConfig({ secondary_surface_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            if (window.elementSdk) {
+              window.elementSdk.config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            if (window.elementSdk) {
+              window.elementSdk.config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["main_title", config.main_title || defaultConfig.main_title],
+        ["message_one", config.message_one || defaultConfig.message_one],
+        ["message_two", config.message_two || defaultConfig.message_two],
+        ["signature", config.signature || defaultConfig.signature]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a3ebacce3d9ca88',t:'MTc2NDA0ODM3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
